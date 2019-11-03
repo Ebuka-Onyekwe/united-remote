@@ -3,12 +3,26 @@
     <ion-title>
       Ionic Blank
     </ion-title>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionFocus)="getReady()"  (debounce)="3000" (ionCancel)="clear()" (ionChange)="filter()" (ionClear)="clear()" animated showCancelButton cancelButtonText="Cancel Search" placeholder="Find {{Settings}}"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 *ngFor="let game of postlist">
+        <ion-card>
+          <ion-card-header>
+              {{game.name}}
+          </ion-card-header>
+          <ion-card-title>
+            <p>Provided by : {{game.provider_title}}</p>  
+          </ion-card-title>
+          <ion-card-content>
+              <img src="{{game.icon_2}}"/>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+        </ion-row>
+        </ion-grid>
 </ion-content>
