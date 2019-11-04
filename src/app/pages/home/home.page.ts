@@ -1,5 +1,6 @@
-import { HttpGetService } from './../services/http-get.service';
+import { HttpGetService } from '../../services/http-get.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,10 @@ export class HomePage implements OnInit {
   Settings: any;
   postlist: any[];
   untouchedArray: any;
-  professionalsList: any[];
-  servicesList: any[];
-  eventCenterList: any[];
   searchQuery: any;
   tepArray: any[];
-  privateEvents: any;
 
-  constructor(public httpService: HttpGetService) {}
+  constructor(public httpService: HttpGetService, public route: Router) {}
 
   ngOnInit() {
     this.httpService.get("./assets/front-end-test/data.json").subscribe((response:any)=>{
@@ -60,13 +57,17 @@ export class HomePage implements OnInit {
     }
   ionViewDidLeave(){
             if(this.isSearching){
-              this.professionalsList = [];
-              this.professionalsList =   [...this.untouchedArray];
+              this.postlist = [];
+              this.postlist =   [...this.untouchedArray];
               this.tepArray = [];
               this.untouchedArray = [];
               this.isSearching = false
                 }
   }
-  
+  getGame(index){
+    this.httpService.setData(this.postlist[index]).then(()=>{
+      this.route.navigateByUrl('game-details')
+    })
+  }
 
 }

@@ -1,17 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-    <ion-searchbar [(ngModel)]="searchQuery" (ionFocus)="getReady()"  (debounce)="3000" (ionCancel)="clear()" (ionChange)="filter()" (ionClear)="clear()" animated showCancelButton cancelButtonText="Cancel Search" placeholder="Find {{Settings}}"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionFocus)="getReady()"  (debounce)="3000" (ionCancel)="clear()" (ionChange)="filter()" (ionClear)="clear()" animated showCancelButton cancelButtonText="Cancel Search" placeholder="Search Games"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col col-3 *ngFor="let game of postlist">
-        <ion-card>
+      <ion-col col-3 *ngFor="let game of postlist; let i = index">
+        <ion-card (click)="getGame(i)" tappable class="ion-activatable">
           <ion-card-header>
               {{game.name}}
           </ion-card-header>
@@ -21,6 +18,7 @@
           <ion-card-content>
               <img src="{{game.icon_2}}"/>
           </ion-card-content>
+          <ion-ripple-effect></ion-ripple-effect>
         </ion-card>
         </ion-col>
         </ion-row>

@@ -5,11 +5,20 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpGetService {
-
+data:any = {}
   constructor(public http : HttpClient) { }
 
   get(url){
     console.log("Got here")
     return  this.http.get(url);
   }
+
+  async setData(data:any){
+    await (this.data = data)
+  }
+
+  getData(){
+    return this.data
+  }
+
 }
