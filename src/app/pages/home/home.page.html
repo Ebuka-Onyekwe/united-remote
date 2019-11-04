@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-searchbar [(ngModel)]="searchQuery" (ionFocus)="getReady()"  (debounce)="3000" (ionCancel)="clear()" (ionChange)="filter()" (ionClear)="clear()" animated showCancelButton cancelButtonText="Cancel Search" placeholder="Search Games"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -8,7 +8,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-3 *ngFor="let game of postlist; let i = index">
-        <ion-card (click)="getGame(i)" tappable class="ion-activatable">
+        <ion-card (click)="getGame(i)" tappable class="ion-activatable" color="light">
           <ion-card-header>
               {{game.name}}
           </ion-card-header>
