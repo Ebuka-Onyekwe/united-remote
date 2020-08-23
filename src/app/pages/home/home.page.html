@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-searchbar [(ngModel)]="searchQuery"  (debounce)="3000" (ionCancel)="clear()" (ionChange)="searchGames()" (ionClear)="clear()" animated show-cancel-button="focus" cancelButtonText="Cancel Search" placeholder="Search Games"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 *ngFor="let game of gameList; let i = index">
+        <ion-card (click)="getGame(i)" tappable class="ion-activatable" color="light">
+          <ion-card-header>
+              {{game.name}}
+          </ion-card-header>
+          <ion-card-title>
+            <p>Provided by : {{game.provider_title}}</p>  
+          </ion-card-title>
+          <ion-card-content>
+              <img src="{{game.icon_2}}"/>
+          </ion-card-content>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+        </ion-col>
+        </ion-row>
+        </ion-grid>
+</ion-content>
