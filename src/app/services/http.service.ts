@@ -11,7 +11,7 @@ export class HttpGetService {
   constructor(public http: HttpClient) { }
 
    getGames() {
-    return  this.http.get(AppValues.GamesUrl);
+    return this.http.get(AppValues.GamesUrl);
   }
 
 }
